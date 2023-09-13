@@ -1,0 +1,74 @@
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="true"
+  >
+    <mat-toolbar color="primary" class="mat-elevation-z6">
+      <img src="../assets/logos/logo.png" class="logo">
+   
+    </mat-toolbar>
+    <mat-card>
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>nombre apellido</mat-card-title>
+        <mat-card-subtitle>Administrador</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+
+    <mat-nav-list>
+   
+  <mat-accordion>
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>           
+        <a mat-list-item class="item" >
+          <mat-icon matListItemIcon>person</mat-icon> Clientes</a
+        >           
+      </mat-expansion-panel-header>
+      <a  mat-list-item routerLink="/Dashboard/customer/list" [routerLinkActive]="['active']" class="item">
+        Clientes</a
+      >
+     <a  mat-list-item routerLink="/Dashboard/site/list" [routerLinkActive]="['active']" class="item">
+      Cliente look history</a
+      >
+      <a  mat-list-item routerLink="/Dashboard/quotes/list" [routerLinkActive]="['active']" class="item">
+        Emergency PIN configuration</a
+      >
+      <a  mat-list-item routerLink="/Dashboard/quotes/list" [routerLinkActive]="['active']" class="item">
+        Emergency PIN history</a
+      >
+    
+      
+    </mat-expansion-panel>
+  </mat-accordion>
+
+    
+      <a mat-list-item  (click)="logout()" class="logoaut">
+        <mat-icon matListItemIcon>exit_to_app</mat-icon> Cerrar Sesion</a
+      >
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="mat-elevation-z6">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span> {{ servicio.option }}</span>
+      <span class="example-spacer"></span>
+
+  
+    </mat-toolbar>
+    <!-- Add Content Here -->
+
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

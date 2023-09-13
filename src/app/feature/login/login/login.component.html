@@ -1,0 +1,41 @@
+<div class="main-div">
+    <form [formGroup]="myForm"  >
+        <mat-card class="example-card mat-elevation-z6">
+            <div class="center">
+                <img src="../assets/logos/logo.png" style="width: 300px">
+
+            </div>
+
+            <mat-card-title class="center">Sign In</mat-card-title>
+            <mat-card-subtitle class="center">Wellcome to User</mat-card-subtitle>
+
+
+            <p class="center">Please enter your Email and password!</p>
+            <mat-card-content>
+
+                <mat-form-field appearance="outline" class="example-full-width" >
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Email" type="email" name="email" formControlName="username">
+                    <mat-error *ngIf="getControl.username.errors?.required">Username is required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="example-full-width" >
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" name="password" formControlName="password" >
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </button>
+                    <mat-error *ngIf="getControl.password.errors?.required">Password is required</mat-error>
+                    <mat-error *ngIf="getControl.password.errors?.minlength">The minimum of characters will be 8</mat-error>
+                </mat-form-field>
+                <div class="center error" *ngIf="error">Usuario y/o contraseña no válida</div>
+
+            </mat-card-content>
+           
+            <mat-card-actions align="end">
+                <button mat-button type="reset" class="margen">Cancelar</button>
+                <button mat-raised-button color="primary"(click)="Login()"  [disabled]="myForm.invalid">Ingresar</button>
+            </mat-card-actions>
+        </mat-card>
+    </form>
+</div>

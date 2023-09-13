@@ -1,0 +1,85 @@
+<div class="grid-container">
+   
+  <div class="demo-button-container">
+    <mat-form-field appearance="outline">
+      <mat-label>Filtro</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+    <div class="example-button-row">
+      <button mat-raised-button (click)="getListCustomer()" class="margen">Refresh
+        <mat-icon iconPositionEnd>refresh</mat-icon>
+      </button>
+      <button mat-raised-button color="primary" (click)="openDialog('Create')">Add Customer
+        <mat-icon iconPositionEnd>add</mat-icon>
+      </button>
+    </div>
+   
+  </div>
+  <div class="mat-elevation-z8">
+
+    <mat-table #table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="sharedKey">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>sharedKey</mat-header-cell>
+        <mat-cell *matCellDef="let element"> 
+          <span class="mobile-label">sharedKey:</span>
+          {{element.sharedKey}} 
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>bussinesId</mat-header-cell>
+        <mat-cell *matCellDef="let element"> 
+          <span class="mobile-label">bussinesId:</span>
+          {{element.name}} 
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>email</mat-header-cell>
+        <mat-cell *matCellDef="let element"> 
+          <span class="mobile-label">email:</span>
+          {{element.email}} 
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="phone">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>phone</mat-header-cell>
+        <mat-cell *matCellDef="let element"> 
+          <span class="mobile-label">phone:</span>
+          {{element.phone}} 
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="dataAdded">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>dataAdded</mat-header-cell>
+        <mat-cell *matCellDef="let element"> 
+          <span class="mobile-label">dataAdded:</span>
+          {{element.dataAdded}} 
+        </mat-cell>
+      </ng-container>
+     
+      <ng-container matColumnDef="completed">
+        <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+        <mat-cell *matCellDef="let element"> 
+          <span class="mobile-label">Acciones:</span>
+          <mat-button-toggle-group #group="matButtonToggleGroup">
+            
+            <mat-button-toggle value="center" aria-label="Text align center" (click)="openDialog('Edit',element)">
+              <mat-icon>edit</mat-icon>
+            </mat-button-toggle> 
+                    </mat-button-toggle-group>
+        </mat-cell>
+      </ng-container>
+     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  
+  <mat-paginator  [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+</div>
+ </div>
+
+
+  
+  
+
+ 
+
+  
+

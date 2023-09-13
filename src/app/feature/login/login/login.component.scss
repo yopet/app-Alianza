@@ -1,0 +1,33 @@
+.example-full-width {
+    width: 100%;
+}
+
+.example-card {
+    max-width: 380px;
+    border-radius: 5px;
+    padding: 24px 30px 24px;
+}
+
+.main-div {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center {
+    text-align: center;
+}
+
+.margen{
+    margin-right: 1rem
+}
+
+.error{
+        font-size: larger;  
+        color: white;
+        background-color: red;
+        border-radius: 5px;
+        padding: 1rem;
+    
+}
